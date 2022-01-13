@@ -44,9 +44,6 @@ def get_items():
         #get items
         items = get_zachs_pages('items')
         
-        #write data to frame
-        items = pd.DataFrame(items)
-        
         #cache data in .csv
         items.to_csv('zachs_items.csv')
     
@@ -66,9 +63,6 @@ def get_stores():
         #get stores
         stores = get_zachs_pages('stores')
         
-        #write data to frame
-        stores = pd.DataFrame(stores)
-        
         #cache data in .csv
         stores.to_csv('zachs_stores.csv')
     
@@ -87,9 +81,6 @@ def get_sales():
     else:
         #get sales
         sales = get_zachs_pages('sales')
-        
-        #write data to frame
-        sales = pd.DataFrame(sales)
         
         #cache data in .csv
         sales.to_csv('zachs_sales.csv')
@@ -112,7 +103,7 @@ def super_store_frame():
 
     #otherwise:
     else:
-            
+
         #merge first two tables with an inner join based on key columns
         join = pd.merge(sales,
                         items,
@@ -120,7 +111,7 @@ def super_store_frame():
                         left_on = 'item',
                         right_on = 'item_id'
                     )
-        
+
         #merge the merged table and the stores table using the store number as a foreign key
         super_frame = pd.merge(join,
                             stores,
@@ -128,7 +119,7 @@ def super_store_frame():
                             left_on = 'store',
                             right_on = 'store_id'
                             )
-        
+
         super_frame.to_csv('super_store_frame.csv')
 
     return super_frame
