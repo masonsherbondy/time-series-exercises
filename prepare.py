@@ -10,9 +10,7 @@ from datetime import timedelta, datetime
 import warnings
 warnings.filterwarnings('ignore')
 
-import acquire
-
-from acquire import super_store_frame
+from acquire import super_store_frame, get_power
 
 
 def prep_tssf():
