@@ -41,7 +41,7 @@ def prep_tssf():
                                          })
     
     #assign sales total column to product of total items and item price
-    sf['sales_total'] = sf.sale_amount * sf.item_price
+    sf['revenue'] = sf.sale_amount * sf.item_price
     
     #make a list of redundant columns
     redundant = ['item', 'store']
@@ -49,6 +49,12 @@ def prep_tssf():
     #drop the redundants
     sf = sf.drop(columns = redundant)
     
+    #rename column for clarity
+    sf = sf.rename(columns = {'sale_amount': 'sales'})
+
+    #write to .csv just in case 
+    sf.to_csv('prepped_super.csv')
+
     #return prepped frame
     return sf
 
@@ -75,3 +81,6 @@ def prep_power():
     power.columns = power.columns.str.lower().str.replace('+', '_')
     
     return power
+
+
+

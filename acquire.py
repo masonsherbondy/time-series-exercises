@@ -41,6 +41,7 @@ def get_items():
 
     #otherwise
     else:
+
         #get items
         items = get_zachs_pages('items')
         
@@ -60,6 +61,7 @@ def get_stores():
     
     #otherwise
     else:
+
         #get stores
         stores = get_zachs_pages('stores')
         
@@ -79,6 +81,7 @@ def get_sales():
 
     #otherwise
     else:
+
         #get sales
         sales = get_zachs_pages('sales')
         
@@ -101,7 +104,7 @@ def super_store_frame():
         #read .csv if available
         super_frame = pd.read_csv('super_store_frame.csv', index_col = 0)
 
-    #otherwise:
+    #otherwise
     else:
 
         #merge first two tables with an inner join based on key columns
